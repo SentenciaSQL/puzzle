@@ -1,0 +1,17 @@
+{
+  "name": "Glimmer Grove",
+  "short_name": "Glimmer",
+  "description": "A luminous match-3 orchard.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1a1448",
+  "theme_color": "#2a1758",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
