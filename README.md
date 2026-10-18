@@ -1,24 +1,33 @@
 # Glimmer Grove
 
-A luminous match-3 orchard for phones, tablets, and desktop browsers.
+A luminous match-3 for phones and tablets. Swap neighboring fruits, crack the frost, and spend leftover moves as bursts of light. Four in a line become a stripe, five become a sunburst, and a corner match folds into a bloom bomb.
 
-Swap neighboring fruits, crack the frost, and spend leftover moves as bursts of light. Four in a line become a stripe, five become a sunburst, and a corner match folds into a bloom bomb.
+The app is Flutter. Android and iOS projects live in `android/` and `ios/`. Progress, coins, and boosters stay on the device.
 
 ## Play
 
 ```bash
-npm start
+flutter pub get
+flutter run
 ```
 
-Then open http://127.0.0.1:4173
+Build an Android package:
 
 ```bash
-npm test
+flutter build apk
+```
+
+The APK is written to `build/app/outputs/flutter-apk/`.
+
+## Checks
+
+```bash
+flutter test
 ```
 
 ## Language
 
-The grove follows the browser language and can be switched between English and Español in Settings. Progress, coins, and boosters stay in this browser.
+The grove follows the device language and can be switched between English and Español in Settings.
 
 ## Fonts
 
