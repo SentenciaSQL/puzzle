@@ -61,4 +61,27 @@ void main() {
       expect(find.textContaining('Level'), findsWidgets);
     }
   });
+
+  testWidgets('profile name field sits on a material card', (tester) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    SharedPreferences.setMockInitialValues({
+      'glimmer-grove-v1': '{"lang":"en","unlocked":1,"coins":250}',
+    });
+    final save = await GroveSave.open();
+    final audio = GroveAudio(save);
+    await tester.pumpWidget(GroveApp(save: save, audio: audio));
+    await tester.pump(const Duration(seconds: 2));
+    expect(tester.takeException(), isNull);
+    await tester.tap(find.byKey(const ValueKey('profile')));
+    await tester.pump(const Duration(milliseconds: 400));
+    expect(tester.takeException(), isNull);
+    expect(find.byType(TextField), findsOneWidget);
+    await tester.enterText(find.byType(TextField), 'Ada');
+    await tester.pump();
+    expect(tester.takeException(), isNull);
+    expect(find.text('Ada'), findsOneWidget);
+  });
 }

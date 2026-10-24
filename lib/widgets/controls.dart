@@ -177,7 +177,10 @@ class GroveCard extends StatelessWidget {
           ),
         ],
       ),
-      child: child,
+      child: Material(
+        type: MaterialType.transparency,
+        child: child,
+      ),
     );
   }
 }
@@ -193,15 +196,21 @@ Future<T?> showGroveDialog<T>({
     barrierLabel: 'Close',
     barrierColor: const Color(0xC8140A28),
     transitionDuration: const Duration(milliseconds: 240),
-    pageBuilder: (context, _, _) => Center(
-      child: Padding(
-        padding: const EdgeInsets.all(22),
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 420),
-          child: builder(context),
+    pageBuilder: (context, _, _) {
+      final bottom = MediaQuery.viewInsetsOf(context).bottom;
+      return Padding(
+        padding: EdgeInsets.only(bottom: bottom),
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(22),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 420),
+              child: builder(context),
+            ),
+          ),
         ),
-      ),
-    ),
+      );
+    },
     transitionBuilder: (context, anim, _, child) {
       final curved = CurvedAnimation(parent: anim, curve: Curves.easeOutCubic);
       return FadeTransition(

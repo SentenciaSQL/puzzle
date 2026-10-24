@@ -364,6 +364,7 @@ class _AvatarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      key: const ValueKey('profile'),
       onTap: () => showGroveDialog(
         context: context,
         builder: (_) => _ProfileCard(save: save),
